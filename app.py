@@ -1,15 +1,17 @@
 import streamlit as st
 import joblib
+# Load the saved model
+model = joblib.load('linear_regression_model.pkl')
 def main():
     # Set the app title
     st.title("Real GDP Price Prediction")
 
     # Add a sidebar for user input
     st.sidebar.header("Input Features")
-    nominal_gdp = st.sidebar.number_input("Nominal GDP Prices (Ksh Million)")
+    year = st.sidebar.number_input("Year")
 
     # Make predictions using the loaded model
-    prediction = model.predict([[nominal_gdp]])
+    prediction = model.predict([[year]])
 
     # Display the predicted real GDP price
     st.subheader("Predicted Real GDP Price")
